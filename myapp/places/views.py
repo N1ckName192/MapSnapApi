@@ -2,7 +2,6 @@ from rest_framework import generics
 from .models import Place, Review
 from .serializers import PlaceSerializer, ReviewSerializer
 
-# Представления для мест
 class PlaceListCreateView(generics.ListCreateAPIView):
     queryset = Place.objects.all()
     serializer_class = PlaceSerializer
@@ -20,6 +19,6 @@ class ReviewCreateView(generics.CreateAPIView):
     serializer_class = ReviewSerializer
 
     def perform_create(self, serializer):
-        place_id = self.kwargs['place_id']  # Получаем id места из URL
-        place = Place.objects.get(id=place_id)  # Получаем объект места
-        serializer.save(place=place)  # Сохраняем отзыв с привязкой к месту
+        place_id = self.kwargs['place_id']
+        place = Place.objects.get(id=place_id)
+        serializer.save(place=place)
