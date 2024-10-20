@@ -13,7 +13,7 @@ class Place(models.Model):
 
 class Review(models.Model):
     place = models.ForeignKey(Place, related_name='reviews', on_delete=models.CASCADE)
-    user = models.CharField(max_length=100)
+    user = models.CharField(max_length=50)
     comment = models.TextField()
     rating = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
